@@ -1,0 +1,15 @@
+
+
+.cars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    @include my    
+}
+.browse__btn{
+    text-align: center;
+    margin: 60px 0;
+}
+

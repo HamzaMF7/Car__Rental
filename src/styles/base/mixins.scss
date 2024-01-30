@@ -1,0 +1,59 @@
+@mixin sm {
+  @media only screen and (min-width: 576px) {
+    @content;
+  }
+}
+
+
+@mixin md {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin lg {
+  @media only screen and (min-width: 992px) {
+    @content;
+  }
+}
+@mixin xl {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+@mixin xxl {
+  @media only screen and (min-width: 1400px) {
+    @content;
+  }
+}
+
+@mixin grid-center {
+  display: grid;
+  place-items: center;
+}
+@mixin mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin my {
+  margin: 20px 0;
+  @include lg {
+    margin: 40px 0;
+  }
+  
+}
+
+@mixin f-spaceB-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin transition($prop: all, $duration, $timingFn: ease) {
+  transition: $prop $duration $timingFn;
+}
+
+@mixin bg-cover {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

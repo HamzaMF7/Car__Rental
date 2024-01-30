@@ -1,0 +1,98 @@
+{
+    "sortMenu": [
+      {
+        "id": 1,
+        "title": "None"
+      },
+      {
+        "id": 2,
+        "title": "Newest"
+      },
+      {
+        "id": 3,
+        "title": "Popular Car"
+      },
+      {
+        "id": 4,
+        "title": "Top Rated"
+      },
+      {
+        "id": 5,
+        "title": "Price(Lowest First)"
+      },
+      {
+        "id": 6,
+        "title": "Price(Highest First)"
+      }
+    ],
+    "brandsMenu": [
+      {
+        "id": 1,
+        "label": "Volkswagen",
+        "checked": false
+      },
+      {
+        "id": 2,
+        "label": "Dacia",
+        "checked": false
+      },
+      {
+        "id": 3,
+        "label": "Renault",
+        "checked": false
+      },
+      {
+        "id": 4,
+        "label": "Toyota",
+        "checked": false
+      },
+      {
+        "id": 5,
+        "label": "Ford",
+        "checked": false
+      },
+      {
+        "id": 6,
+        "label": "Bmw",
+        "checked": false
+      },
+      {
+        "id": 7,
+        "label": "Mercedes",
+        "checked": false
+      }
+    ],
+    "categoryMenu": [
+      {
+        "id": 1,
+        "label": "Sport",
+        "checked": false
+      },
+      {
+        "id": 2,
+        "label": "SUV",
+        "checked": false
+      },
+      {
+        "id": 3,
+        "label": "MPV",
+        "checked": false
+      },
+      {
+        "id": 4,
+        "label": "Sedan",
+        "checked": false
+      },
+      {
+        "id": 5,
+        "label": "Coupe",
+        "checked": false
+      },
+      {
+        "id": 6,
+        "label": "Hatchback",
+        "checked": false
+      }
+    ]
+  }
+  

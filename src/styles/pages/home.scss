@@ -1,0 +1,48 @@
+// #popular {
+//     margin-bottom: 100px;
+// }
+
+#findCar {
+  max-height: 180px;
+  @include lg {
+    max-height: 80px;
+  }
+  .findCar__wrraper {
+    background-color: $bg-color;
+    border-radius: $radius;
+    width: fit-content;
+    position: relative;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    padding: 16px;
+    @include sm {
+      &::before {
+        top: 78px;
+        left: -22px;
+        content: "";
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        background-color: transparent;
+        box-shadow: 7px 7px 0 -1px $bg-color;
+        // box-shadow: 7px 7px 0 -1px #f6f7f9;
+        border-radius: 48%;
+        transform: skew(-3deg, -10deg) rotate(2deg);
+      }
+      &::after {
+        top: 78px;
+        right: -22px;
+        content: "";
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        background-color: transparent;
+        box-shadow: 7px 7px 0 -1px $bg-color;
+        border-radius: 52%;
+        transform: skew(-3deg, -10deg) rotate(94deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+
+.popular__swiper {
+  .swiper-wrapper {
+    padding: 22px 0 ;
+  }
+  .swiper-slide {
+    width: fit-content;
+  }
+  .swiper-slide-active {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+}

@@ -1,0 +1,8 @@
+
+export const devices = {
+    MOBILE_PORTRAIT: 576,
+    TABLET_PORTRAIT: 768,
+    TABLET_LANDSCAPE: 992,
+    DESKTOP: 1200,
+    LARGE_DESKTOP: 1400,
+};

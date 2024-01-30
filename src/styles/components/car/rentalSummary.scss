@@ -1,0 +1,95 @@
+.rental__summary {
+  // max-width: 30%;
+  border-radius: $radius;
+  background-color: #ffffff;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0 20px;
+  .first {
+    // width: 40%; 
+    border-bottom: 1px solid #c3d4e966;
+
+  }
+  .car__info {
+    margin: 24px 0 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 10px;
+    // padding-bottom: 30px;
+    img {
+        height: 70px;
+    }
+    .name__review {
+        min-width: 60%;
+        h3 {
+          margin-bottom: 12px;
+        }
+        .review {
+          .rate,
+          > span {
+            font-size: $xs;
+            display: block;
+            margin-bottom: 4px;
+          }
+        }
+    }
+  }
+  .subtotal,
+  .tax {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    h6 {
+      color: $neutral-light-300;
+      font-weight: $semiBold;
+    }
+    > span {
+      font-size: $base;
+      font-weight: $semiBold;
+    }
+  }
+  .promo__code , .apply {
+    margin: 24px 0;
+  }
+  .total__price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > span {
+        font-size: $lg-2;
+        font-weight: $bold;
+    }
+  }
+
+  // for all h4 in rental__summary component
+  h4 {
+    margin-bottom: 4px; 
+ }
+}
+
+.payement-inputs,
+.apply {
+  padding: 18px 24px;
+  font-size: $xs;
+  background-color: $bg-color;
+  border-radius: $radius;
+  color: $neutral-light-300;
+  font-weight: $medium;
+  border: none;
+  box-shadow: none;
+  height: auto;
+  @include xl {
+    padding: 16px 32px;
+    font-size: $sm;
+  }
+}
+
+.apply {
+  font-weight: 600;
+  color: $neutral-default-500;
+}
+
+

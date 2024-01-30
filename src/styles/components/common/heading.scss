@@ -1,0 +1,10 @@
+
+
+.heading {
+    .heading__title{
+        font-weight: $semiBold;
+        color: $neutral-light-300;
+        text-align: center;
+        @include my;
+    }
+}

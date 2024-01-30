@@ -1,0 +1,39 @@
+// base
+@import "./base/mixins.scss";
+@import "./base/colors.scss";
+@import "./base/variables.scss";
+
+// components
+  // --> common
+@import "./components/common/input.scss";
+@import "./components/common/overlay.scss";
+@import "./components/common/searchBar.scss";
+@import "./components/common/heading.scss";
+@import "./components/common/carsComponent.scss";
+
+  // --> car
+@import "./components/car/carCard.scss";
+@import "./components/car/findCarForm.scss";
+@import "./components/car/rentalSummary.scss";
+
+  // --> filters
+@import "./components/filters/filterBar.scss";
+@import "./components/filters/filterBarOptions.scss";
+
+  // --> forms
+// @import "./components/";
+
+  // --> layout
+@import "./components/layout/header.scss";
+
+  // --> sliders
+@import "./components/sliders/heroSlider.scss";
+@import "./components/sliders/popularSlider.scss";
+
+// pages
+@import "./pages/about.scss";
+@import "./pages/carDetails.scss";
+@import "./pages/contact.scss";
+@import "./pages/errorPage.scss";
+@import "./pages/home.scss";
+@import "./pages/cars.scss";

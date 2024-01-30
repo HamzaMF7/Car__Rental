@@ -1,0 +1,88 @@
+.car__card {
+  background-color: white;
+  border-radius: $radius;
+  width: 240px; // 327
+  padding: 16px;
+  flex: 1;
+  // @include lg{
+  // }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      display: block;
+      .car__name {
+        font-weight: $semiBold; //
+        font-size: $base; //
+        color: $neutral-default-500;
+        margin-bottom: 4px;
+      }
+      .car__category {
+        font-weight: $medium; //
+        font-size: $xs; //
+        color: $neutral-light-300;
+      }
+    }
+    .heart__icon {
+      color: $neutral-light-300;
+      font-size: $lg-2;
+    }
+  }
+  .main {
+    display: flex;
+    flex-direction: column;
+    gap: 0 20px;
+    margin-bottom: 25px;
+    .car__image {
+      position: relative;
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   bottom: 0;
+      //   width: 100%;
+      //   height: 3%;
+      //   background-color: transparent;
+      //   box-shadow: -1px -8px 19px 8px white;
+      // }
+    }
+    .car__info {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-direction: row;
+      min-width: 70px;
+      color: $neutral-light-300;
+      font-size: $xs;
+      font-weight: $medium;
+      .fuel__type,
+      .transmision__type,
+      .capacity {
+        display: flex;
+        align-items: center;
+        gap: 0 3px;
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .price {
+      font-weight: $bold;
+      font-size: $base;
+      .per__day {
+        font-size: $xs;
+        color: $neutral-light-300;
+      }
+      .old__price {
+        font-weight: $semiBold;
+        font-size: $xs;
+        color: $neutral-light-300;
+        display: block;
+        text-decoration: line-through;
+      }
+    }
+
+  }
+}

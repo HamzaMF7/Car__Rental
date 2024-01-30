@@ -1,0 +1,43 @@
+// --------- filterbar-default --------
+.filterbar__wrapper {
+    display: none;
+    @include lg {
+      display: block;
+      background-color: white;
+      padding: 20px;
+      border-radius: $radius;
+    }
+}
+
+//---------- filterbar-mobile ---------
+
+#filterbar__mob {
+  position: fixed;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  padding: 16px 12px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  @include lg {
+    display: none;
+  }
+  .filterbar__mob__wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: $base;
+    h4 {
+      color: $neutral-dark-900;
+      font-size: $base;
+      font-size: $semiBold;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+  }
+}
+
+.show {
+  display: block !important;
+}

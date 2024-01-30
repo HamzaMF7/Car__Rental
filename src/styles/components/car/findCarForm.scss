@@ -1,0 +1,87 @@
+
+
+.find__car {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 0 40px;
+  @include mx-auto;
+  @include lg {
+    flex-direction: row; 
+  }
+
+  .info {
+    flex: 1;
+    background: white;
+    padding: 10px;
+    border-radius: $radius;
+    @include lg {
+      padding: 20px;
+    }
+    .pick__up,
+    .drop__off {
+      color: $neutral-default-500;
+      font-weight: $semiBold;
+      font-size: $sm;
+      margin-bottom: 16px;
+      padding-left: 11px;
+      @include xl {
+        font-size: $base;
+      }
+    }
+
+    .info__select {
+      display: flex;
+      justify-content: space-between;
+      .location,
+      .date,
+      .time {
+        flex: 1;
+        &:not(.time){
+          border-right: 1px solid $neutral-light-200;
+        }
+      }
+      label {
+        display: block;
+        padding: 0 11px;
+        color: $neutral-default-500;
+        font-weight: $bold;
+        font-size: $sm;
+        @include xl {
+          font-size: $base;
+        }
+      }
+    }
+  }
+  .second {
+    position: relative;
+    top: -30px;
+    @include lg {
+      inset: 0;
+    }
+  }
+  .cars__filter__btn {
+    position: relative;
+    z-index: 1;
+    top: -15px;
+    border: none;
+    background: $primary-default-500;
+    color: white;
+    border-radius: $radius;
+    height: 50px;
+    width: 50px;
+    font-size: $xl-1;
+  }
+  input::placeholder , .ant-select-selection-placeholder {
+    font-size: $xs;
+    @include xl {
+      font-size: $base;
+    }
+  }
+}
+.arrow__icon {
+  color: $neutral-default-500;
+}
+
+

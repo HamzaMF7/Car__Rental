@@ -1,0 +1,85 @@
+#searchBar {
+  position: relative;
+  z-index: 999;
+  .searchBar__content {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    .search__input {
+      position: relative;
+      width: 100%;
+      top: -12px;
+    }
+    .search__box {
+      background-color: $bg-color;
+      border-radius: $radius;
+      height: 274px;
+      padding: 10px;
+      overflow: scroll;
+      .not__found {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        font-size: $xxxl;
+        color: $neutral-light-300;
+        span {
+          margin-top: 10px;
+          font-size: $lg-1;
+          font-weight: $medium;
+        }
+      }
+      .search__results {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px 15px;
+          .search__result__item {
+            display: flex;
+            min-width: 385px;
+            .image__container {
+              margin-right: 10px;
+              img {
+                height: 120px;
+              }
+            }
+            .prod__details {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+              .prod__info {
+                .name {
+                  display: inline-block;
+                  font-weight: $semiBold;
+                  font-size: $base;
+                  color: $neutral-default-500;
+                  margin-bottom: 4px;
+                }
+                .category__name {
+                  display: block;
+                  font-weight: $medium;
+                  font-size: $xs; 
+                  color: $neutral-light-300;
+                }
+              }
+              .price {
+                font-weight: $bold;
+                font-size: $base;
+                .per__day {
+                  font-size: $xs;
+                  color: $neutral-light-300;
+                }
+                .old__price {
+                  font-weight: $semiBold;
+                  font-size: $xs;
+                  color: $neutral-light-300;
+                  display: block;
+                  text-decoration: line-through;
+                }
+              }
+            }
+          }
+      }
+    }
+  }
+}

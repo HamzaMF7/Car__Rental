@@ -1,0 +1,144 @@
+@import "./styles/style.scss";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-jakatra;
+  background-color: $bg-color;
+  // min-height: 100vh;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 12px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  @include mx-auto;
+}
+
+.container {
+  @include sm {
+    width: 570px;
+  }
+  @include md {
+    width: 750px;
+  }
+  @include lg {
+    width: 970px;
+  }
+  @include xl {
+    width: 1170px;
+  }
+  @include xxl {
+    width: 1370px;
+  }
+}
+
+h1 {
+  font-size: $xl-2;
+  @include lg {
+    font-size: $xxl-2;
+  }
+  @include xl {
+    font-size: $xxxl;
+  }
+}
+h2 {
+  font-size: $xl-1;
+  @include lg {
+    font-size: $xl-2;
+  }
+  @include xl {
+    font-size: $xxl-2;
+  }
+}
+
+h3 {
+  font-size: $lg-2;
+  @include lg {
+    font-size: $xl-1;
+  }
+  @include xl {
+    font-size: $xl-2;
+  }
+}
+
+h4 {
+  font-size: $base;
+  @include lg {
+    font-size: $lg-1;
+  }
+  @include xl {
+    font-size: $lg-2;
+  }
+}
+
+h5 {
+  font-size: $sm;
+  @include lg {
+    font-size: $base;
+  }
+  @include xl {
+    font-size: $lg-1;
+  }
+}
+
+h6 {
+  font-size: $xs;
+  @include lg {
+    font-size: $sm;
+  }
+  @include xl {
+    font-size: $base;
+  }
+}
+
+.txt {
+  font-size: $xs;
+  color: $neutral-light-300;
+  @include xl {
+    font-size: $sm;
+  }
+}
+// .main-title {
+// }
+// .sub-title {
+// }

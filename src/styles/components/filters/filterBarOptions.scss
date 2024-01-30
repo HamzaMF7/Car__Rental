@@ -1,0 +1,68 @@
+.filter__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: white;
+  width: 100%;
+  @include lg {
+    all: unset;
+  }
+
+  .sort__options,
+  .filter__options {
+    display: none;
+    padding: 16px 12px;
+    @include lg {
+      all: unset;
+    }
+    .sort__head,
+    .filter__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $neutral-light-100;
+      .title {
+        color: $neutral-light-300;
+        font-size: $base;
+        font-size: $semiBold;
+        letter-spacing: 1px;
+      }
+      .close__btn {
+        display: block;
+        cursor: pointer;
+        @include lg {
+          display: none;
+        }
+      }
+    }
+    .sort__menu,
+    .filter__block,
+    .filter__menu,
+    .price__filter {
+      padding: 10px 0;
+      li,
+      li > label {
+        // cursor: pointer;
+        font-size: $base;
+        color: $neutral-dark-900;
+        &:not(label) {
+          padding: 5px 0;
+        }
+      }
+      .sort__value {
+        cursor: pointer;
+      }
+      .active {
+        color: $info-dark-900;
+      }
+      h6 {
+        color: $neutral-light-300;
+      }
+    }
+
+    .sort__options {
+      display: block;
+    }
+  }
+}

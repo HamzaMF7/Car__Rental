@@ -1,0 +1,19 @@
+#cars__page {
+  @include my;
+
+  .filtred__cars {
+    display: flex;
+    @include lg {
+      gap: 20px;
+      .filter__aside {
+        min-width: 280px;
+        @include xxl {
+          min-width: 304px;
+        }
+      }
+      .cars__wrapper {
+        flex: 1;
+      }
+    }
+  }
+}
