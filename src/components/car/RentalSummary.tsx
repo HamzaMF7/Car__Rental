@@ -28,6 +28,7 @@ const RentalSummary = () => {
           </div>
         </div>
       </div>
+      <div className="border"></div>
       <div className="second">
         <div className="subtotal">
           <h6>Subtotal</h6>
