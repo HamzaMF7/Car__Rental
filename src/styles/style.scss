@@ -21,7 +21,7 @@
 @import "./components/filters/filterBarOptions.scss";
 
   // --> forms
-// @import "./components/";
+@import "./components/forms/billingInfo.scss";
 
   // --> layout
 @import "./components/layout/header.scss";
@@ -37,3 +37,4 @@
 @import "./pages/errorPage.scss";
 @import "./pages/home.scss";
 @import "./pages/cars.scss";
+@import "./pages/payement.scss";

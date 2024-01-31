@@ -39,7 +39,7 @@ const RentalSummary = () => {
           <span>$0</span>
         </div>
         <CustomInput
-          inputClassName="promo__code payement-inputs"
+          inputClassName="promo__code payement-inputs-style"
           buttonClassName="apply"
           value=""
           placeholder="Apply promo code"

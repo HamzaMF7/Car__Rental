@@ -47,7 +47,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ toggleSearch }) => {
               value={query}
               onChange={handleChange}
               placeholder="Search for car..."
-              className="input__field"
+              inputClassName="input__field"
               allowClear={true}
               size="middle"
             />

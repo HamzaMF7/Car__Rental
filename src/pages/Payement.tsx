@@ -1,10 +1,12 @@
 import RentalSummary from "../components/car/RentalSummary"
+import BillingInfo from "../components/forms/BillingInfo"
 
 const Payement = () => {
   return (
-    <main id="payement">
+    <main className="payement">
         <div className="container">
             <RentalSummary/>
+            <BillingInfo/>
         </div>
     </main>
   )

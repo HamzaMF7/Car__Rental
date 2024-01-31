@@ -86,14 +86,12 @@
     }
   }
 
-  // for all h4 in rental__summary component
-  h4 {
-    margin-bottom: 4px; 
- }
+
 }
 
-.payement-inputs,
 .apply {
+  font-weight: 600;
+  color: $neutral-default-500;
   padding: 18px 24px;
   font-size: $xs;
   background-color: $bg-color;
@@ -108,10 +106,3 @@
     font-size: $sm;
   }
 }
-
-.apply {
-  font-weight: 600;
-  color: $neutral-default-500;
-}
-
-
