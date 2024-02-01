@@ -1,8 +1,10 @@
 import { Button, Input , Space} from "antd";
 
 interface Props {
+  name?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
   type: "text" | "password" | "number" | "email" | "search";
   inputClassName?: string;
@@ -14,8 +16,10 @@ interface Props {
 }
 
 const CustomInput = ({
+  name,
   value,
   onChange,
+  onBlur,
   placeholder,
   type,
   inputClassName,
