@@ -1,25 +1,24 @@
-import { Button, Input , Space} from "antd";
+import { Button, Input, Space } from "antd";
+import { FieldAttributes, useField } from "formik";
 
-interface Props {
-  name?: string;
+interface Props  {
+  // customName: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
   type: "text" | "password" | "number" | "email" | "search";
   inputClassName?: string;
   buttonClassName?: string;
   allowClear?: boolean;
   size: "large" | "middle" | "small";
-  btn?: boolean; 
+  btn?: boolean;
   btnTxt?: string;
 }
 
-const CustomInput = ({
-  name,
+const CustomInput: React.FC<Props> = ({
+  // customName,
   value,
   onChange,
-  onBlur,
   placeholder,
   type,
   inputClassName,
@@ -29,20 +28,31 @@ const CustomInput = ({
   btn,
   btnTxt,
   ...rest
-}: Props) => {
+}) => {
+  // const [field ] = useField(rest.name);
+  // console.log(field);
+
   return (
-    <Space.Compact style={{ width: '100%' }}>
+    <Space.Compact style={{ width: "100%" }}>
       <Input
+        name={rest.name}
         type={type}
+        // value={value !== undefined ? value : field.value }
         value={value}
+        // onChange={onChange !== undefined ? onChange : field.onChange}
         onChange={onChange}
+        onBlur={rest.onBlur}
         placeholder={placeholder}
         allowClear={allowClear}
         className={inputClassName}
         size={size}
         {...rest}
       />
-      {btn && <Button {...rest} className={buttonClassName}>{btnTxt}</Button>}
+      {btn && (
+        <Button {...rest} className={buttonClassName}>
+          {btnTxt}
+        </Button>
+      )}
     </Space.Compact>
   );
 };
