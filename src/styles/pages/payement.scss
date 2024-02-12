@@ -1,4 +1,34 @@
 .payement {
+    margin: 32px 0;
+   .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    @include lg {
+      flex-direction: row-reverse;
+    }
+    // flex-wrap: wrap;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // for all h4 in payement component
   h4 {
     margin-bottom: 4px;

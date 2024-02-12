@@ -5,8 +5,10 @@ const Payement = () => {
   return (
     <main className="payement">
         <div className="container">
+          <div className="layout">
             <RentalSummary/>
             <FormsPayement/>
+          </div>
         </div>
     </main>
   )

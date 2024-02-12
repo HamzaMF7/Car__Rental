@@ -1,124 +1,167 @@
-.billing__info,
-.rental__info,
-.payement__method {
-  margin-top: 20px; // just for test
-  border-radius: $radius;
-  padding: 16px;
-  background-color: #ffffff;
+.forms__payement {
+  // it might cause issue when u use this component in other places ( should replace or remove it )
+  flex : 1;
+  form{
+    display: grid;
+    gap: 32px;
+  }
+  .billing__info,
+  .rental__info,
+  .payement__method,
+  .confirmation {
+    border-radius: $radius;
+    padding: 16px;
+    background-color: #ffffff;
 
-  .title {
+    .title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      @include lg {
+        margin-bottom: 32px;
+      }
+    }
+    .forms {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      @include md {
+        gap: 24px;
+      }
+      //styles for select in rental__info
+      .ant-picker,
+      .ant-select {
+        width: 100%;
+        padding: unset;
+      }
+      .ant-picker-input,
+      .ant-select {
+        //payement-inputs-style
+        padding: 18px 24px;
+        font-size: $xs;
+        background-color: $bg-color;
+        border-radius: $radius;
+        color: $neutral-light-300;
+        font-weight: $medium;
+        border: none;
+        box-shadow: none;
+        height: auto;
+        @include xl {
+          padding: 16px 32px;
+          font-size: $sm;
+        }
+        .ant-select-selector {
+          height: 20px;
+        }
+      }
+      .ant-select-selection-placeholder,
+      .ant-picker-input > input {
+        font-size: 12px;
+      }
+
+      label {
+        h5 {
+          margin-bottom: 16px;
+          font-weight: $semiBold;
+        }
+      }
+    }
+  }
+
+  .rental__info {
+    & .forms:nth-child(3) {
+      margin-bottom: 24px;
+      @include lg {
+        margin-bottom: 32px;
+      }
+    }
+  }
+  .credit__card,
+  .payement__type {
+    background-color: $bg-color;
+    border-radius: $radius;
+    padding: 16px;
+  }
+  .card__type,
+  .payement__type {
+    height: fit-content;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 24px;
+    align-items: center;
+    margin-bottom: 20px;
     @include lg {
-      margin-bottom: 32px;
+      margin-bottom: 30px;
     }
-  }
-  .forms {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    @include md {
-      gap: 24px;
-    }
-    //styles for select in rental__info
-    .ant-picker,
-    .ant-select {
-      width: 100%;
-      padding: unset;
-    }
-    .ant-picker-input,
-    .ant-select {
-      //payement-inputs-style
-      padding: 18px 24px;
-      font-size: $xs;
-      background-color: $bg-color;
-      border-radius: $radius;
-      color: $neutral-light-300;
-      font-weight: $medium;
-      border: none;
-      box-shadow: none;
-      height: auto;
-      @include xl {
-        padding: 16px 32px;
-        font-size: $sm;
-      }
-      .ant-select-selector {
-        height: 20px;
-      }
-    }
-    .ant-select-selection-placeholder,
-    .ant-picker-input > input {
-      font-size: 12px;
-    }
-
-    label {
-      h5 {
-        margin-bottom: 16px;
-        font-weight: $semiBold;
+    .payement__img {
+      display: flex;
+      gap: 12px;
+      img {
+        width: 40px;
+        height: auto;
       }
     }
   }
-}
-.rental__info {
-  & .forms:nth-child(3) {
-    margin-bottom: 24px;
-    @include lg {
-      margin-bottom: 32px;
-    }
-  }
-}
-.credit__card,
-.payement__type {
-  background-color: $bg-color;
-  border-radius: $radius;
-  padding: 16px;
-}
-.card__type,
-.payement__type {
-  height: fit-content;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  @include lg {
-    margin-bottom: 30px;
-  }
-  .payement__img {
-    display: flex;
-    gap: 12px;
-    img {
-      width: 40px;
-      height: auto;
-    }
-  }
-}
 
-.payement__type {
-  padding: 0 16px;
-  margin: 20px 0;
-  .payement__img {
-    transform: scale(1.8, 1.3);
-    padding-right: 16px;
-    img {
-      width: 50px;
-      height: auto;
+  .payement__type {
+    padding: 0 16px;
+    margin: 20px 0;
+    .payement__img {
+      transform: scale(1.8, 1.3);
+      padding-right: 16px;
+      img {
+        width: 50px;
+        height: auto;
+      }
     }
   }
-}
 
-.pick__up,
-.drop__off,
-.card {
-  color: $neutral-default-500;
-  font-weight: $semiBold;
-  font-size: $sm;
-  margin-bottom: 20px;
-  @include xl {
-    font-size: $base;
-    margin-bottom: 24px;
+  .confirmation {
+    .terms {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 24px;
+      @include lg {
+        gap: 24px;
+        margin-bottom: 32px;
+      }
+      .checkbox {
+        border-radius: $radius;
+        padding: 16px;
+        background-color: $bg-color;
+        font-weight: $medium;
+        font-size: $xs;
+        @include lg {
+          font-weight: $semiBold;
+          font-size: $base;
+        }
+      }
+    }
+    .safety {
+      margin-top: 16px;
+      > img {
+        width: 32px;
+        height: 32px;
+      }
+      p:first-child {
+        padding: 5px 0;
+      }
+    }
   }
-}
-.card {
-  margin-bottom: unset;
+
+  .pick__up,
+  .drop__off,
+  .card {
+    color: $neutral-default-500;
+    font-weight: $semiBold;
+    font-size: $sm;
+    margin-bottom: 20px;
+    @include xl {
+      font-size: $base;
+      margin-bottom: 24px;
+    }
+  }
+  .card {
+    margin-bottom: unset;
+  }
 }
