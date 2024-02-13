@@ -4,28 +4,39 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import FilterBar from "../components/filters/FilterBar";
 import { Button } from "../styles/styledComponents/Button.styled";
 import useToggle from "../hooks/useToggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Heading from "../components/common/Heading";
 import CarCard from "../components/car/CarCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../services/state/store";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, EffectCoverflow, FreeMode, Scrollbar } from "swiper/modules";
 
 import "swiper/scss";
 
 import PopularSlider from "../components/Sliders/PopularSlider";
+import { getProductDetails } from "../services/state/CarSlice";
 
 const CarDetails = () => {
   const { id } = useParams();
-  const { products } = useSelector((state: RootState) => state.car);
+  const { productDetails , products } = useSelector((state: RootState) => state.car);
   const [expand, toggleExpand] = useToggle(false);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
   const totalItems = 30;
   const handlePageChange = (page: number): void => {
     setCurrentPage(page);
+  };
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductDetails({ id: id }));
+  }, []);
+
+  const navigate = useNavigate();
+  const navigateToCarPayement = (CarID: number) => {
+    navigate(`/payement/${CarID}`);
   };
 
   return (
@@ -38,17 +49,17 @@ const CarDetails = () => {
           <div className="car__details">
             <section className="details">
               <div className="image">
-                <img src={`/cars-images/${products[id - 1].Image}`} alt="img" />
+                <img src={`/cars-images/${productDetails[0]?.Image}`} alt="img" />
               </div>
               <div className="info">
                 <header className="header">
                   <div className="left">
-                    <h3 className="car__name">{products[id - 1].CarName}</h3>
+                    <h3 className="car__name">{productDetails[0]?.CarName}</h3>
                     <div className="review">
                       <Rate
                         className="rate"
                         allowHalf
-                        defaultValue={products[id].RateCount}
+                        defaultValue={productDetails[0]?.RateCount}
                       />
                       <span>440+ Reviewer</span>
                     </div>
@@ -62,13 +73,13 @@ const CarDetails = () => {
                 <main className="main">
                   <div className="extra__info">
                     <span>Type Car</span>
-                    <span>{products[id - 1].CategoryName}</span>
+                    <span>{productDetails[0]?.CategoryName}</span>
                     <span>Capacity</span>
-                    <span>{products[id - 1].Capacity}</span>
+                    <span>{productDetails[0]?.Capacity}</span>
                     <span>Steering</span>
-                    <span>{products[id - 1].TransmitionType}</span>
+                    <span>{productDetails[0]?.TransmitionType}</span>
                     <span>Fuel Type</span>
-                    <span>{products[id - 1].FuelType}</span>
+                    <span>{productDetails[0]?.FuelType}</span>
                     <span>Hypbrid</span>
                     <span>No</span>
                     <span>AirConditioner</span>
@@ -77,13 +88,11 @@ const CarDetails = () => {
                 </main>
                 <footer className="footer">
                   <div className="price">
-                    <span className="new__pice">
-                      {products[id - 1].Price}DH
-                    </span>
+                    <span className="new__pice">{productDetails[0]?.Price}DH</span>
                     <span className="per__day">/ day</span>
                     {/* <span className="old__price">$80.00</span> */}
                   </div>
-                  <Button className="rental__now" fs="16px" p="15px 25px">
+                  <Button className="rental__now" fs="16px" p="15px 25px" onClick={()=> navigateToCarPayement(id)}>
                     Rental Now
                   </Button>
                 </footer>

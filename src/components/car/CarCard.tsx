@@ -75,6 +75,10 @@ const CarCard: React.FC<CarCardProps> = ({
   const navigateToCarDetail = (CarID: number) => {
     navigate(`/car-details/${CarID}`);
   };
+  const navigateToCarPayement = (CarID: number) => {
+    navigate(`/payement/${CarID}`);
+  };
+
   return (
     <StyledCard
       isDesktop={desktop}
@@ -112,7 +116,12 @@ const CarCard: React.FC<CarCardProps> = ({
           <span className="per__day">/ day</span>
           <span className="old__price">$80.00</span>
         </div>
-        <Button className="rental__now">Rental Now</Button>
+        <Button
+          className="rental__now"
+          onClick={() => navigateToCarPayement(CarID)}
+        >
+          Rental Now
+        </Button>
       </footer>
     </StyledCard>
   );

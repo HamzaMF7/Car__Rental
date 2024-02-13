@@ -6,17 +6,17 @@ import { STATUS } from "../../utils/status";
 
 interface State {
   products: Car[];
-  sortedValue: string, 
+  sortedValue: string;
   filtredProducts: Car[];
-  productDetail: DetailedCar[];
+  productDetails: DetailedCar[];
   filterBar: FilterBar;
   brandFilters: string[];
   categoryFilters: string[];
   selectedPrice: {
-    choosedPrice: number,
-    minPrice: number,
-    maxPrice: number
-  }
+    choosedPrice: number;
+    minPrice: number;
+    maxPrice: number;
+  };
   status: string;
 }
 
@@ -39,6 +39,37 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
+
+export const getProductDetails = createAsyncThunk(
+  "cars/getProductDetails",
+  async ({ id }, thunkAPI) => {
+    try {
+      // Make both API requests concurrently
+      const [carResponse, carDetailsResponse] = await Promise.all([
+        axios.get(`${baseURL}/cars?CarID=${id}`),
+        axios.get(`${baseURL}/carsDetails?CarID=${id}`),
+      ]);
+      
+      const carData = carResponse.data;
+      const carDetailsData = carDetailsResponse.data;
+
+      // Merge the data from both responses into a single object
+      const mergedData = { ...carData[0], ...carDetailsData[0] };
+
+      console.log(mergedData);
+
+      // Wrap the merged data in an array
+      return [mergedData];
+    } catch (error) {
+      return thunkAPI.rejectWithValue({
+        error,
+        additionalInfo: "Fetching products failed",
+      });
+    }
+  }
+);
+
+
 export const getFilterBarDta = createAsyncThunk(
   "cars/get-filter-bar",
   async (_, thunkAPI: ThunkAPI) => {
@@ -58,12 +89,12 @@ const initialState: State = {
   products: [],
   sortedValue: "None",
   filtredProducts: [],
-  productDetail: [],
+  productDetails: [],
   filterBar: { sortMenu: [], brandsMenu: [], categoryMenu: [] },
   brandFilters: [],
   categoryFilters: [],
   selectedPrice: {
-    choosedPrice: 0 ,
+    choosedPrice: 0,
     minPrice: 0,
     maxPrice: 0,
   },
@@ -81,9 +112,9 @@ const carSlice = createSlice({
       state.selectedPrice.minPrice = min;
       state.selectedPrice.maxPrice = max;
     },
-    setSortedValue: (state , action:PayloadAction<{ newValue: string }>) => {
-      const {newValue} = action.payload;
-      state.sortedValue = newValue ;
+    setSortedValue: (state, action: PayloadAction<{ newValue: string }>) => {
+      const { newValue } = action.payload;
+      state.sortedValue = newValue;
     },
     setBrandFilters: (
       state,
@@ -111,17 +142,17 @@ const carSlice = createSlice({
         );
       }
     },
-    setChoosedPrice: (state, action: PayloadAction<{newPrice: number}>) => {
+    setChoosedPrice: (state, action: PayloadAction<{ newPrice: number }>) => {
       const { newPrice } = action.payload;
       state.selectedPrice.choosedPrice = newPrice;
     },
-    applyFilters : (state) => {
-      let updatedProducts = [...state.products] 
+    applyFilters: (state) => {
+      let updatedProducts = [...state.products];
 
       /*==== Sorting ====*/
       switch (state.sortedValue) {
         case "None":
-          updatedProducts
+          updatedProducts;
           break;
         case "Popular Car":
           updatedProducts = updatedProducts.filter(
@@ -147,21 +178,21 @@ const carSlice = createSlice({
           throw new Error("Wrong Option Selected");
       }
 
-    /*==== Filtering ====*/
-    // filter by brands
-      if(state.brandFilters.length){
+      /*==== Filtering ====*/
+      // filter by brands
+      if (state.brandFilters.length) {
         updatedProducts = updatedProducts.filter((item: Car) =>
-        state.brandFilters.includes(item.Brand)
-      );
+          state.brandFilters.includes(item.Brand)
+        );
       }
-    // filter by categories
-      if(state.categoryFilters.length){
+      // filter by categories
+      if (state.categoryFilters.length) {
         updatedProducts = updatedProducts.filter((item: Car) =>
-        state.categoryFilters.includes(item.CategoryName)
-      );
+          state.categoryFilters.includes(item.CategoryName)
+        );
       }
-    // filter by price 
-      if(state.selectedPrice.choosedPrice){
+      // filter by price
+      if (state.selectedPrice.choosedPrice) {
         updatedProducts = updatedProducts.filter(
           (item: Car) => item.Price <= state.selectedPrice.choosedPrice
         );
@@ -180,6 +211,16 @@ const carSlice = createSlice({
         state.status = STATUS.SUCCEEDED;
       })
       .addCase(getProducts.rejected, (state) => {
+        state.status = STATUS.FAILED;
+      })
+      .addCase(getProductDetails.pending, (state) => {
+        state.status = STATUS.LOADING;
+      })
+      .addCase(getProductDetails.fulfilled, (state, action) => {
+        state.productDetails = action.payload;
+        state.status = STATUS.SUCCEEDED;
+      })
+      .addCase(getProductDetails.rejected, (state) => {
         state.status = STATUS.FAILED;
       })
       .addCase(getFilterBarDta.pending, (state) => {
