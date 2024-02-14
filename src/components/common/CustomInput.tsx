@@ -1,7 +1,7 @@
 import { Button, Input, Space } from "antd";
 import { FieldAttributes, useField } from "formik";
 
-interface Props  {
+interface Props {
   // customName: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,6 +13,8 @@ interface Props  {
   size: "large" | "middle" | "small";
   btn?: boolean;
   btnTxt?: string;
+  iconAlias?: React.ComponentType<any>;
+  iconClassName? : string ;
 }
 
 const CustomInput: React.FC<Props> = ({
@@ -27,6 +29,8 @@ const CustomInput: React.FC<Props> = ({
   size,
   btn,
   btnTxt,
+  iconAlias: IconComponent,
+  iconClassName ,
   ...rest
 }) => {
   // const [field ] = useField(rest.name);
@@ -48,8 +52,26 @@ const CustomInput: React.FC<Props> = ({
         size={size}
         {...rest}
       />
-      {btn && (
+      {/* {
+      btn && IconComponent ? (
+        <Button
+          {...rest}
+          className={buttonClassName}
+          icon={<IconComponent className="home-icon" />}
+        >
+          {btnTxt}
+        </Button>
+      ) : (
         <Button {...rest} className={buttonClassName}>
+          {btnTxt}
+        </Button>
+      )} */}
+      {btn && (
+        <Button
+          {...rest}
+          className={buttonClassName}
+          icon={IconComponent && <IconComponent className={iconClassName}/>}
+        >
           {btnTxt}
         </Button>
       )}

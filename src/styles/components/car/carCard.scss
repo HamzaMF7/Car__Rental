@@ -36,6 +36,7 @@
     margin-bottom: 25px;
     .car__image {
       position: relative;
+      cursor: pointer;
       // &::before {
       //   content: "";
       //   position: absolute;
@@ -49,7 +50,7 @@
     .car__info {
       display: flex;
       justify-content: space-evenly;
-      align-items: center;
+      align-items: end;
       flex-direction: row;
       min-width: 70px;
       color: $neutral-light-300;
@@ -83,6 +84,5 @@
         text-decoration: line-through;
       }
     }
-
   }
 }
