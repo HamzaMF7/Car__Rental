@@ -1,6 +1,6 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { Checkbox, Slider } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../services/state/store";
@@ -28,9 +28,12 @@ const FilterBarOptions: React.FC<MobileFilterProps> = ({
   handleMobSortVisibility,
 }) => {
   const dispatch: AppDispatch = useDispatch();
-  const { filterBar, products , selectedPrice } = useSelector((state: RootState) => state.car);
-  const {minPrice , maxPrice } = selectedPrice ;
+  const { filterBar, products, selectedPrice } = useSelector(
+    (state: RootState) => state.car
+  );
+  const { minPrice, maxPrice } = selectedPrice;
   const { sortMenu, brandsMenu, categoryMenu } = filterBar;
+  const [selectedSort, setSelectedSort] = useState("None");
 
   useEffect(() => {
     dispatch(getFilterBarDta());
@@ -39,17 +42,27 @@ const FilterBarOptions: React.FC<MobileFilterProps> = ({
     dispatch(getPriceRange());
   }, [products]);
 
+
   const handleSortByChange = (value: string) => {
+    setSelectedSort(value);
     dispatch(setSortedValue({ newValue: value }));
   };
   const handleBrandFiltersChange = (e: CheckboxChangeEvent) => {
-    dispatch(setBrandFilters({brand: e.target.value, checked: e.target.checked }));
+    console.log(e.target.value, typeof e.target.value, e.target.checked);
+    dispatch(
+      setBrandFilters({ brand: e.target.value, checked: e.target.checked })
+    );
   };
   const handleCategoryFiltersChange = (e: CheckboxChangeEvent) => {
-    dispatch(setCategoryFilters({categoryName: e.target.value, checked: e.target.checked }));
-    };
+    dispatch(
+      setCategoryFilters({
+        categoryName: e.target.value,
+        checked: e.target.checked,
+      })
+    );
+  };
   const handlePriceChange = (value: number) => {
-    dispatch(setChoosedPrice({newPrice: value}))
+    dispatch(setChoosedPrice({ newPrice: value }));
   };
   return (
     <div className="filter__bar">
@@ -67,10 +80,11 @@ const FilterBarOptions: React.FC<MobileFilterProps> = ({
         <ul className="sort__menu">
           {sortMenu.map((item) => {
             const { id, title } = item;
+            const isActive = selectedSort === title;
             return (
               <li
                 key={id}
-                className={false ? "active" : ""}
+                className={ isActive ? "active__sort__value" : ""}
                 onClick={() => handleSortByChange(title)}
               >
                 <span className="sort__value">{title}</span>
