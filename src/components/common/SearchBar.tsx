@@ -5,15 +5,18 @@ import { useEffect, useRef, useState } from "react";
 import { FaBoxOpen } from "react-icons/fa";
 import { RootState } from "../../services/state/store";
 import { Car } from "../../utils/sharedTypes";
+import { useNavigate } from "react-router-dom";
 
 interface SearchBarProps {
   toggleSearch: (value: boolean) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ toggleSearch }) => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [searchedProducts, setSearchedProducts] = useState<Car[]>([]);
   const searchRef = useRef<HTMLDivElement>(null);
+
 
   const { products } = useSelector((state: RootState) => state.car);
 
@@ -63,10 +66,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ toggleSearch }) => {
                       <div
                         className="search__result__item"
                         key={CarID}
-                        // onClick={() => {
-                        //     navigate("/product/" + item.id);
-                        //     setSearchModal(false);
-                        // }}
+                        onClick={() => {
+                            navigate(`/car-details/${CarID}`);
+                            closeSearch();
+                        }}
                       >
                         <div className="image__container">
                           <img

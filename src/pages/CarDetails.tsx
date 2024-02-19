@@ -32,7 +32,7 @@ const CarDetails = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProductDetails({ id: id }));
-  }, []);
+  }, [id]);
 
   const navigate = useNavigate();
   const navigateToCarPayement = (CarID: number) => {

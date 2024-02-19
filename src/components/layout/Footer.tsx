@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CustomInput from "../common/CustomInput";
 import { useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { FaCar, FaRegCopyright } from "react-icons/fa";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const quickLinks = [
   {
@@ -39,8 +40,16 @@ const Footer = () => {
   const date = new Date();
   const year = date.getFullYear();
 
+  const location = useLocation();
+
+  console.log(location)
+
+  const windowSize= useWindowSize();
+
+
+
   return (
-    <footer className="layout__footer">
+    <footer className="layout__footer" style={{ marginBottom: location.pathname === "/cars" && windowSize.width < 992 ? "52px" : "0px" }}>
       <div className="container">
         <div className="content">
           <div className="logo__desc">
