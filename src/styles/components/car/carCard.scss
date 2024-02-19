@@ -24,9 +24,12 @@
         color: $neutral-light-300;
       }
     }
-    .heart__icon {
-      color: $neutral-light-300;
-      font-size: $lg-2;
+    .fill__wishlist {
+      cursor: pointer;
+      .heart__icon {
+        color: $neutral-light-300;
+        font-size: $lg-2;
+      }
     }
   }
   .main {

@@ -12,6 +12,8 @@ interface State {
   filterBar: FilterBar;
   brandFilters: string[];
   categoryFilters: string[];
+  wishlistIDs: number[];
+  wishlistData: Car[];
   selectedPrice: {
     choosedPrice: number;
     minPrice: number;
@@ -49,7 +51,7 @@ export const getProductDetails = createAsyncThunk(
         axios.get(`${baseURL}/cars?CarID=${id}`),
         axios.get(`${baseURL}/carsDetails?CarID=${id}`),
       ]);
-      
+
       const carData = carResponse.data;
       const carDetailsData = carDetailsResponse.data;
 
@@ -69,7 +71,6 @@ export const getProductDetails = createAsyncThunk(
   }
 );
 
-
 export const getFilterBarDta = createAsyncThunk(
   "cars/get-filter-bar",
   async (_, thunkAPI: ThunkAPI) => {
@@ -85,6 +86,23 @@ export const getFilterBarDta = createAsyncThunk(
   }
 );
 
+// export const getWishlistData = createAsyncThunk(
+//   "cars/get-wishlist",
+//   async (_, thunkAPI: ThunkAPI) => {
+//     const { wishlistIDs } = thunkAPI.getState().car;
+//     console.log("wish list ", wishlistIDs);
+//     try {
+//       const response = await axios.post(`${baseURL}/wishlist`, { wishlistIDs });
+//       return response.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue({
+//         error,
+//         additionalInfo: "Fetching wishlist data failed",
+//       });
+//     }
+//   }
+// );
+
 const initialState: State = {
   products: [],
   sortedValue: "None",
@@ -93,6 +111,8 @@ const initialState: State = {
   filterBar: { sortMenu: [], brandsMenu: [], categoryMenu: [] },
   brandFilters: [],
   categoryFilters: [],
+  wishlistIDs: [],
+  wishlistData: [],
   selectedPrice: {
     choosedPrice: 0,
     minPrice: 0,
@@ -140,6 +160,21 @@ const carSlice = createSlice({
         state.categoryFilters = state.categoryFilters.filter(
           (item) => item.toLowerCase() !== categoryName.toLowerCase()
         );
+      }
+    },
+    setwishlistIDs: (state, action: PayloadAction<{ carID: number }>) => {
+      const { carID } = action.payload;
+      console.log(carID);
+      if (state.wishlistIDs.includes(carID)) {
+        state.wishlistIDs = state.wishlistIDs.filter(
+          (itemId) => itemId !== carID
+        );
+      } else {
+        state.wishlistIDs.push(carID);
+      }
+      // when the backend is created delete this if statement it's just for test
+      if(state.wishlistIDs){
+        state.wishlistData = state.products.filter((carItem)=> state.wishlistIDs.includes(carItem.CarID) )
       }
     },
     setChoosedPrice: (state, action: PayloadAction<{ newPrice: number }>) => {
@@ -232,9 +267,21 @@ const carSlice = createSlice({
         state.filterBar.categoryMenu = action.payload.categoryMenu;
         state.status = STATUS.SUCCEEDED;
       })
-      .addCase(getFilterBarDta.rejected, (state) => {
-        state.status = STATUS.FAILED;
-      });
+      // ****** uncomment this when the the api is created in backend 
+      // .addCase(getFilterBarDta.rejected, (state) => {
+      //   state.status = STATUS.FAILED;
+      // })
+      // .addCase(getWishlistData.pending, (state) => {
+      //   state.status = STATUS.LOADING;
+      // })
+      // .addCase(getWishlistData.fulfilled, (state, action) => {
+      //   state.wishlistData = action.payload;
+      //   state.status = STATUS.SUCCEEDED;
+      // })
+      // .addCase(getWishlistData.rejected, (state) => {
+      //   state.status = STATUS.FAILED;
+      // })
+      ;
   },
 });
 
@@ -243,6 +290,7 @@ export const {
   setSortedValue,
   setBrandFilters,
   setCategoryFilters,
+  setwishlistIDs,
   setChoosedPrice,
   applyFilters,
 } = carSlice.actions;

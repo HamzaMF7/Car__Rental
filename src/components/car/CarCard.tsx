@@ -1,10 +1,13 @@
-import { AiOutlineHeart, AiFillSetting } from "react-icons/ai";
+import { AiOutlineHeart, AiFillSetting, AiFillHeart } from "react-icons/ai";
 import { BsFuelPumpFill } from "react-icons/bs";
 import { IoPeopleSharp } from "react-icons/io5";
 import styled from "styled-components";
 import { Car } from "../../utils/sharedTypes";
 import { Button } from "../../styles/styledComponents/Button.styled";
 import { useNavigate } from "react-router-dom";
+import useToggle from "../../hooks/useToggle";
+import { useDispatch } from "react-redux";
+import { setwishlistIDs } from "../../services/state/CarSlice";
 
 const StyledCard = styled.div<{ isVerticalCard: boolean; isDesktop: boolean }>`
   padding: ${({ isDesktop }) => (isDesktop ? "24px" : "16px")};
@@ -72,11 +75,17 @@ const CarCard: React.FC<CarCardProps> = ({
   },
 }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [activeHeart, toggleHeart] = useToggle(false);
   const navigateToCarDetail = (CarID: number) => {
     navigate(`/car-details/${CarID}`);
   };
   const navigateToCarPayement = (CarID: number) => {
     navigate(`/payement/${CarID}`);
+  };
+  const handleWishList = (CarID: number) => {
+    dispatch(setwishlistIDs({carID : CarID}));
+    toggleHeart();
   };
 
   return (
@@ -90,8 +99,12 @@ const CarCard: React.FC<CarCardProps> = ({
           <h4 className="car__name">{CarName}</h4>
           <h5 className="car__category">{CategoryName}</h5>
         </div>
-        <span className="fill__wishlist">
-          <AiOutlineHeart className="heart__icon" />
+        <span className="fill__wishlist" onClick={() => handleWishList(CarID)}>
+          {activeHeart ? (
+            <AiFillHeart style={{ color: "red" }} className="heart__icon" />
+          ) : (
+            <AiOutlineHeart className="heart__icon" />
+          )}
         </span>
       </header>
       <main className="main">
@@ -112,9 +125,9 @@ const CarCard: React.FC<CarCardProps> = ({
       </main>
       <footer className="footer">
         <div className="price">
-          <span className="new__pice">${Price}</span>
+          <span className="new__pice">{Price}DH</span>
           <span className="per__day">/ day</span>
-          <span className="old__price">$80.00</span>
+          {/* <span className="old__price">80DH</span> */}
         </div>
         <Button
           className="rental__now"
