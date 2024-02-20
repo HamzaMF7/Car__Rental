@@ -1,10 +1,10 @@
 import { Button, Input, Space } from "antd";
-import { FieldAttributes, useField } from "formik";
 
 interface Props {
-  // customName: string;
+  customName?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   type: "text" | "password" | "number" | "email" | "search";
   inputClassName?: string;
@@ -18,9 +18,10 @@ interface Props {
 }
 
 const CustomInput: React.FC<Props> = ({
-  // customName,
+  customName,
   value,
   onChange,
+  onBlur,
   placeholder,
   type,
   inputClassName,
@@ -39,13 +40,13 @@ const CustomInput: React.FC<Props> = ({
   return (
     <Space.Compact style={{ width: "100%" }}>
       <Input
-        name={rest.name}
+        name={customName}
         type={type}
         // value={value !== undefined ? value : field.value }
         value={value}
         // onChange={onChange !== undefined ? onChange : field.onChange}
         onChange={onChange}
-        onBlur={rest.onBlur}
+        onBlur={onBlur}
         placeholder={placeholder}
         allowClear={allowClear}
         className={inputClassName}

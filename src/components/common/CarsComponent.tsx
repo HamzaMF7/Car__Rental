@@ -1,12 +1,12 @@
 import { Pagination } from "antd";
 import useToggle from "../../hooks/useToggle";
-import useWindowSize from "../../hooks/useWindowSize";
 import { devices } from "../../utils/devices";
 import CarCard from "../car/CarCard";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Car } from "../../utils/sharedTypes";
 import { Button } from "../../styles/styledComponents/Button.styled";
+import useWindowSize from "../../hooks/useWindowSize";
 
 interface CarsComponentProps {
   products: Car[];
@@ -18,17 +18,19 @@ const CarsComponent: React.FC<CarsComponentProps> = ({ products }) => {
   const [isDesktop, toggleDesktop] = useToggle(false);
   const [isVerticalCard, toggleVerticalCard] = useToggle(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const { width } = useWindowSize();
   const { pathname } = useLocation();
+  const { width } = useWindowSize();
 
   const handleWindowSizeChange = () => {
-    toggleVerticalCard(
-      (width >= MOBILE_PORTRAIT && width < TABLET_PORTRAIT) ||
-        width >= TABLET_LANDSCAPE
-        ? true
-        : false
-    );
-    toggleDesktop(width >= DESKTOP ? true : false);
+    if (width) {
+      toggleVerticalCard(
+        (width >= MOBILE_PORTRAIT && width < TABLET_PORTRAIT) ||
+          width >= TABLET_LANDSCAPE
+          ? true
+          : false
+      );
+      toggleDesktop(width >= DESKTOP ? true : false);
+    }
   };
 
   useEffect(() => {
@@ -40,8 +42,8 @@ const CarsComponent: React.FC<CarsComponentProps> = ({ products }) => {
   };
 
   const getPageSize = (): number => {
-    if (width < MOBILE_PORTRAIT) return 6;
-    else if (width < TABLET_PORTRAIT) return 8;
+    if (width && width < MOBILE_PORTRAIT) return 6;
+    else if (width && width < TABLET_PORTRAIT) return 8;
     else return 12;
   };
   const pageSize = getPageSize();

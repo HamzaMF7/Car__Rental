@@ -1,24 +1,24 @@
 import { Rate } from "antd";
 import CustomInput from "../common/CustomInput";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../services/state/store";
+import { useSelector } from "react-redux";
+import {  RootState } from "../../services/state/store";
 import { getProductDetails } from "../../services/state/CarSlice";
 import { useParams } from "react-router-dom";
+import { useAppDispatch } from "../../hooks/hooks";
 
 const RentalSummary = () => {
-  const {id } = useParams()
+  const { id } = useParams();
   const onChange = () => {
     console.log("hi");
   };
   console.log(id);
-  const { productDetails  } = useSelector((state: RootState) => state.car);
-  const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(getProductDetails({ id: id }));
-  },[id])
-  
-   
+  const { productDetails } = useSelector((state: RootState) => state.car);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    id && dispatch(getProductDetails(+id));
+  }, [id]);
+
   return (
     <div className="rental__summary">
       <div className="first">
@@ -35,7 +35,7 @@ const RentalSummary = () => {
               <Rate
                 className="rate"
                 allowHalf
-                  defaultValue={productDetails[0]?.RateCount}
+                defaultValue={productDetails[0]?.RateCount}
               />
               <span>440+ Reviewer</span>
             </div>

@@ -14,21 +14,23 @@ interface PopularSliderProps {
   popularCar: Car[];
 }
 
-const PopularSlider: React.FC<PopularSliderProps> = ({popularCar}) => {
+const PopularSlider: React.FC<PopularSliderProps> = ({ popularCar }) => {
   const { TABLET_LANDSCAPE, DESKTOP } = devices;
   const [isDesktop, toggleDesktop] = useToggle(false);
   const [isVerticalCard, toggleVerticalCard] = useToggle(false);
 
-  const windowSize = useWindowSize();
+  const { width } = useWindowSize();
 
   const handleWindowSizeChange = () => {
-    toggleDesktop(windowSize.width > DESKTOP);
-    toggleVerticalCard(windowSize.width <= TABLET_LANDSCAPE);
+    if (width) {
+      toggleDesktop(width > DESKTOP);
+      toggleVerticalCard(width <= TABLET_LANDSCAPE);
+    }
   };
 
   useEffect(() => {
     handleWindowSizeChange();
-  }, [windowSize]);
+  }, [width]);
 
   return (
     <Swiper
@@ -62,7 +64,11 @@ const PopularSlider: React.FC<PopularSliderProps> = ({popularCar}) => {
     >
       {popularCar?.map((carItem, i) => (
         <SwiperSlide key={i} className="popular__slides">
-          <CarCard desktop={isDesktop} verticalcard={isVerticalCard} carInfo={carItem}/>
+          <CarCard
+            desktop={isDesktop}
+            verticalcard={isVerticalCard}
+            carInfo={carItem}
+          />
         </SwiperSlide>
       ))}
     </Swiper>

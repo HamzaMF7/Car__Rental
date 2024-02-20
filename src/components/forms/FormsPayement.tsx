@@ -1,6 +1,6 @@
 import { Checkbox, DatePicker, Radio, Select, TimePicker } from "antd";
 import CustomInput from "../common/CustomInput";
-import { Form, Field, ErrorMessage, Formik } from "formik";
+import { Form, Field, Formik, FieldProps } from "formik";
 import { IoIosArrowDown } from "react-icons/io";
 import dayjs from "dayjs";
 import { Button } from "../../styles/styledComponents/Button.styled";
@@ -45,16 +45,14 @@ const FormsPayement = () => {
     newsletter: false,
     termsCondition: false,
   };
-  const windowSize = useWindowSize();
+  const { width } = useWindowSize();
 
-  console.log(windowSize.width);
-
-  const onSubmit = (values: MyFormValues, actions: any) => {
+  const onSubmit = (values: MyFormValues) => {
     console.log(values);
   };
-  const onchange = () => {
-    console.log("hello");
-  };
+  // const onchange = () => {
+  //   console.log("hello");
+  // };
 
   return (
     <div className="forms__payement">
@@ -74,10 +72,10 @@ const FormsPayement = () => {
                   <h5>Name</h5>
                 </label>
                 <Field name="userName">
-                  {({ field, meta }) => (
+                  {({ field, meta }: FieldProps<any>) => (
                     <>
                       <CustomInput
-                        id="name"
+                        // id="name"
                         type="text"
                         {...field}
                         size="middle"
@@ -96,10 +94,9 @@ const FormsPayement = () => {
                   <h5>Phone Number</h5>
                 </label>
                 <Field name="phoneNumber">
-                  {({ field, meta }) => (
+                  {({ field, meta }: FieldProps<any>) => (
                     <>
                       <CustomInput
-                        id="phone"
                         type="text"
                         {...field}
                         size="middle"
@@ -118,10 +115,9 @@ const FormsPayement = () => {
                   <h5>Address</h5>
                 </label>
                 <Field name="address">
-                  {({ field, meta }) => (
+                  {({ field, meta }: FieldProps<any>) => (
                     <>
                       <CustomInput
-                        id="address"
                         type="text"
                         {...field}
                         size="middle"
@@ -140,10 +136,9 @@ const FormsPayement = () => {
                   <h5>City</h5>
                 </label>
                 <Field name="city">
-                  {({ field, meta }) => (
+                  {({ field, meta }: FieldProps<any>) => (
                     <>
                       <CustomInput
-                        id="city"
                         type="text"
                         {...field}
                         size="middle"
@@ -289,17 +284,18 @@ const FormsPayement = () => {
                   <label htmlFor="cardNumber">
                     <h5>Card Number</h5>
                   </label>
-                  <Field name="cardNumber">
-                    {({ field, meta }) => (
+                  <Field
+                    name="cardNumber"
+                    style={{ "background-color": "#ffffff" }}
+                  >
+                    {({ field, meta }: FieldProps<any>) => (
                       <>
                         <CustomInput
-                          id="cardNumber"
                           type="text"
                           {...field}
                           size="middle"
                           placeholder="Card Number"
                           inputClassName="payement-inputs-style"
-                          style={{ "background-color": "#ffffff" }}
                         />
                         {meta.touched && meta.error && (
                           <div className="error">{meta.error}</div>
@@ -312,17 +308,18 @@ const FormsPayement = () => {
                   <label htmlFor="cardHolder">
                     <h5>Card Holder</h5>
                   </label>
-                  <Field name="cardHolder">
-                    {({ field, meta }) => (
+                  <Field
+                    name="cardHolder"
+                    style={{ "background-color": "#ffffff" }}
+                  >
+                    {({ field, meta }: FieldProps<any>) => (
                       <>
                         <CustomInput
-                          id="cardHolder"
                           type="text"
                           {...field}
                           size="middle"
                           placeholder="Card holder"
                           inputClassName="payement-inputs-style"
-                          style={{ "background-color": "#ffffff" }}
                         />
                         {meta.touched && meta.error && (
                           <div className="error">{meta.error}</div>
@@ -335,17 +332,18 @@ const FormsPayement = () => {
                   <label htmlFor="expirationDate">
                     <h5>Expiration Date</h5>
                   </label>
-                  <Field name="expirationDate">
-                    {({ field, meta }) => (
+                  <Field
+                    name="expirationDate"
+                    style={{ "background-color": "#ffffff" }}
+                  >
+                    {({ field, meta }: FieldProps<any>) => (
                       <>
                         <CustomInput
-                          id="expirationDate"
                           type="text"
                           {...field}
                           size="middle"
                           placeholder="DD /MMYY"
                           inputClassName="payement-inputs-style"
-                          style={{ "background-color": "#ffffff" }}
                         />
                         {meta.touched && meta.error && (
                           <div className="error">{meta.error}</div>
@@ -358,17 +356,15 @@ const FormsPayement = () => {
                   <label htmlFor="cvc">
                     <h5>CVC</h5>
                   </label>
-                  <Field name="cvc">
-                    {({ field, meta }) => (
+                  <Field name="cvc" style={{ "background-color": "#ffffff" }}>
+                    {({ field, meta }: FieldProps<any>) => (
                       <>
                         <CustomInput
-                          id="cvc"
                           type="text"
                           {...field}
                           size="middle"
                           placeholder="CVC"
                           inputClassName="payement-inputs-style"
-                          style={{ "background-color": "#ffffff" }}
                         />
                         {meta.touched && meta.error && (
                           <div className="error">{meta.error}</div>
@@ -399,7 +395,7 @@ const FormsPayement = () => {
             </div>
             <div className="terms">
               <Field name="newsletter">
-                {({ field, meta }) => (
+                {({ field }: FieldProps<any>) => (
                   <Checkbox {...field} className="checkbox">
                     I agree with sending an Marketing and newsletter emails. No
                     spam, promissed!
@@ -407,7 +403,7 @@ const FormsPayement = () => {
                 )}
               </Field>
               <Field name="termsCondition">
-                {({ field, meta }) => (
+                {({ field }: FieldProps<any>) => (
                   <Checkbox {...field} className="checkbox">
                     I agree with our terms and conditions and privacy policy.
                   </Checkbox>
@@ -415,8 +411,8 @@ const FormsPayement = () => {
               </Field>
             </div>
             <Button
-              p={windowSize.width >= 992 ? "16px 32px" : "10px 16px"}
-              fs={windowSize.width >= 992 ? "16px" : "12px"}
+              p={width && width >= 992 ? "16px 32px" : "10px 16px"}
+              fs={width && width >= 992 ? "16px" : "12px"}
               type="submit"
             >
               Rent Now

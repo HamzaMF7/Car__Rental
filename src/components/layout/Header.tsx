@@ -46,11 +46,13 @@ const Header = () => {
     toggleMenu(true);
   };
 
-  const windowSize = useWindowSize();
+  const { width } = useWindowSize();
 
   useEffect(() => {
-    toggleDesktop(windowSize.width >= 768);
-  }, [windowSize]);
+    if (width) {
+      toggleDesktop(width >= 768);
+    }
+  }, [width]);
 
   useOutsideClick(menuRef, closeMenu);
 
@@ -93,7 +95,10 @@ const Header = () => {
                   <FiSearch />
                 </span>
               </div>
-              <div className="wishlist__action" onClick={()=> navigate("/wishlist")}>
+              <div
+                className="wishlist__action"
+                onClick={() => navigate("/wishlist")}
+              >
                 <span>
                   <AiOutlineHeart />
                 </span>

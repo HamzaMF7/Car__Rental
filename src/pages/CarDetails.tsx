@@ -7,16 +7,14 @@ import useToggle from "../hooks/useToggle";
 import { useEffect, useState } from "react";
 import Heading from "../components/common/Heading";
 import CarCard from "../components/car/CarCard";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../services/state/store";
 import { useNavigate, useParams } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, EffectCoverflow, FreeMode, Scrollbar } from "swiper/modules";
 
 import "swiper/scss";
 
-import PopularSlider from "../components/Sliders/PopularSlider";
 import { getProductDetails } from "../services/state/CarSlice";
+import { useAppDispatch } from "../hooks/hooks";
 
 const CarDetails = () => {
   const { id } = useParams();
@@ -29,9 +27,9 @@ const CarDetails = () => {
     setCurrentPage(page);
   };
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(getProductDetails({ id: id }));
+   id && dispatch(getProductDetails(+id));
   }, [id]);
 
   const navigate = useNavigate();

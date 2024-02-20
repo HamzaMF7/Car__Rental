@@ -22,14 +22,9 @@ interface State {
   status: string;
 }
 
-interface ThunkAPI {
-  rejectWithValue: typeof rejectWithValue;
-  // Add other properties if needed
-}
-
 export const getProducts = createAsyncThunk(
   "cars/get-products",
-  async (_, thunkAPI: ThunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const response = await axios.get(`${baseURL}/cars`);
       return response.data;
@@ -44,12 +39,12 @@ export const getProducts = createAsyncThunk(
 
 export const getProductDetails = createAsyncThunk(
   "cars/getProductDetails",
-  async ({ id }, thunkAPI) => {
+  async (carID: number, thunkAPI) => {
     try {
       // Make both API requests concurrently
       const [carResponse, carDetailsResponse] = await Promise.all([
-        axios.get(`${baseURL}/cars?CarID=${id}`),
-        axios.get(`${baseURL}/carsDetails?CarID=${id}`),
+        axios.get(`${baseURL}/cars?CarID=${carID}`),
+        axios.get(`${baseURL}/carsDetails?CarID=${carID}`),
       ]);
 
       const carData = carResponse.data;
@@ -73,7 +68,7 @@ export const getProductDetails = createAsyncThunk(
 
 export const getFilterBarDta = createAsyncThunk(
   "cars/get-filter-bar",
-  async (_, thunkAPI: ThunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const response = await axios.get(`${baseURL}/filterbar`);
       return response.data;
@@ -88,7 +83,7 @@ export const getFilterBarDta = createAsyncThunk(
 
 // export const getWishlistData = createAsyncThunk(
 //   "cars/get-wishlist",
-//   async (_, thunkAPI: ThunkAPI) => {
+//   async (_, thunkAPI) => {
 //     const { wishlistIDs } = thunkAPI.getState().car;
 //     console.log("wish list ", wishlistIDs);
 //     try {
@@ -173,8 +168,10 @@ const carSlice = createSlice({
         state.wishlistIDs.push(carID);
       }
       // when the backend is created delete this if statement it's just for test
-      if(state.wishlistIDs){
-        state.wishlistData = state.products.filter((carItem)=> state.wishlistIDs.includes(carItem.CarID) )
+      if (state.wishlistIDs) {
+        state.wishlistData = state.products.filter((carItem) =>
+          state.wishlistIDs.includes(carItem.CarID)
+        );
       }
     },
     setChoosedPrice: (state, action: PayloadAction<{ newPrice: number }>) => {
@@ -266,22 +263,21 @@ const carSlice = createSlice({
         state.filterBar.brandsMenu = action.payload.brandsMenu;
         state.filterBar.categoryMenu = action.payload.categoryMenu;
         state.status = STATUS.SUCCEEDED;
-      })
-      // ****** uncomment this when the the api is created in backend 
-      // .addCase(getFilterBarDta.rejected, (state) => {
-      //   state.status = STATUS.FAILED;
-      // })
-      // .addCase(getWishlistData.pending, (state) => {
-      //   state.status = STATUS.LOADING;
-      // })
-      // .addCase(getWishlistData.fulfilled, (state, action) => {
-      //   state.wishlistData = action.payload;
-      //   state.status = STATUS.SUCCEEDED;
-      // })
-      // .addCase(getWishlistData.rejected, (state) => {
-      //   state.status = STATUS.FAILED;
-      // })
-      ;
+      });
+    // ****** uncomment this when the the api is created in backend
+    // .addCase(getFilterBarDta.rejected, (state) => {
+    //   state.status = STATUS.FAILED;
+    // })
+    // .addCase(getWishlistData.pending, (state) => {
+    //   state.status = STATUS.LOADING;
+    // })
+    // .addCase(getWishlistData.fulfilled, (state, action) => {
+    //   state.wishlistData = action.payload;
+    //   state.status = STATUS.SUCCEEDED;
+    // })
+    // .addCase(getWishlistData.rejected, (state) => {
+    //   state.status = STATUS.FAILED;
+    // })
   },
 });
 

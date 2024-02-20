@@ -12,5 +12,5 @@ export default defineConfig({
   //     usePolling: true
   //   }
   // },
-  base: "/Car__Rental/",
+  // base: "/Car__Rental/",
 });

@@ -1,17 +1,18 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import HeroSlider from "../components/Sliders/HeroSlider";
 import PopularSlider from "../components/Sliders/PopularSlider";
 import FindCarForm from "../components/car/FindCarForm";
 import CarsComponent from "../components/common/CarsComponent";
 import Heading from "../components/common/Heading";
 import { applyFilters, getProducts, setSortedValue } from "../services/state/CarSlice";
-import { AppDispatch, RootState } from "../services/state/store";
+import { RootState } from "../services/state/store";
 import { useEffect } from "react";
+import { useAppDispatch } from "../hooks/hooks";
 const Home = () => {
   const { products, filtredProducts } = useSelector(
     (state: RootState) => state.car
   );
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
