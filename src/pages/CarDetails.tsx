@@ -18,7 +18,9 @@ import { useAppDispatch } from "../hooks/hooks";
 
 const CarDetails = () => {
   const { id } = useParams();
-  const { productDetails , products } = useSelector((state: RootState) => state.car);
+  const { productDetails, products } = useSelector(
+    (state: RootState) => state.car
+  );
   const [expand, toggleExpand] = useToggle(false);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 10;
@@ -29,13 +31,16 @@ const CarDetails = () => {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-   id && dispatch(getProductDetails(+id));
+    id && dispatch(getProductDetails(+id));
   }, [id]);
 
   const navigate = useNavigate();
   const navigateToCarPayement = (CarID: number) => {
     navigate(`/payement/${CarID}`);
   };
+
+  console.log("first:", productDetails[0]?.RateCount);
+  console.log("second", 3);
 
   return (
     <main id="carDetails__page">
@@ -47,18 +52,23 @@ const CarDetails = () => {
           <div className="car__details">
             <section className="details">
               <div className="image">
-                <img src={`/cars-images/${productDetails[0]?.Image}`} alt="img" />
+                <img
+                  src={`/cars-images/${productDetails[0]?.Image}`}
+                  alt="img"
+                />
               </div>
               <div className="info">
                 <header className="header">
                   <div className="left">
                     <h3 className="car__name">{productDetails[0]?.CarName}</h3>
                     <div className="review">
-                      <Rate
-                        className="rate"
-                        allowHalf
-                        defaultValue={productDetails[0]?.RateCount}
-                      />
+                      {productDetails[0]?.RateCount !== undefined && (
+                        <Rate
+                          className="rate"
+                          allowHalf
+                          defaultValue={productDetails[0]?.RateCount}
+                        />
+                      )}
                       <span>440+ Reviewer</span>
                     </div>
                   </div>
@@ -86,11 +96,18 @@ const CarDetails = () => {
                 </main>
                 <footer className="footer">
                   <div className="price">
-                    <span className="new__pice">{productDetails[0]?.Price}DH</span>
+                    <span className="new__pice">
+                      {productDetails[0]?.Price}DH
+                    </span>
                     <span className="per__day">/ day</span>
                     {/* <span className="old__price">$80.00</span> */}
                   </div>
-                  <Button className="rental__now" fs="16px" p="15px 25px" onClick={()=> navigateToCarPayement(id)}>
+                  <Button
+                    className="rental__now"
+                    fs="16px"
+                    p="15px 25px"
+                    onClick={() => id && navigateToCarPayement(+id)}
+                  >
                     Rental Now
                   </Button>
                 </footer>

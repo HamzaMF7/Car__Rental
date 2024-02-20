@@ -42,20 +42,26 @@ const Footer = () => {
 
   const location = useLocation();
 
-  console.log(location)
+  console.log(location);
 
-  const windowSize= useWindowSize();
-
-
+  const { width } = useWindowSize();
 
   return (
-    <footer className="layout__footer" style={{ marginBottom: location.pathname === "/cars" && windowSize.width < 992 ? "52px" : "0px" }}>
+    <footer
+      className="layout__footer"
+      style={{
+        marginBottom:
+          location.pathname === "/cars" && width && width < 992
+            ? "52px"
+            : "0px",
+      }}
+    >
       <div className="container">
         <div className="content">
           <div className="logo__desc">
             <h4 className="logo">
-                <FaCar className="car__logo"/>
-                Rent Car <br /> Service
+              <FaCar className="car__logo" />
+              Rent Car <br /> Service
             </h4>
             <h6>
               <p>

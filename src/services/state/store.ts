@@ -1,4 +1,4 @@
-import { AnyAction, ThunkDispatch, configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 import carReducer from "./CarSlice";
 
