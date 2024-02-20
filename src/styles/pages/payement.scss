@@ -1,0 +1,59 @@
+.payement {
+    margin: 32px 0;
+   .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    @include lg {
+      flex-direction: row-reverse;
+    }
+    // flex-wrap: wrap;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // for all h4 in payement component
+  h4 {
+    margin-bottom: 4px;
+  }
+  .input-placeholder-fs,
+  .steps {
+    color: $neutral-light-300;
+    font-size: $xs;
+    @include lg {
+      font-size: $sm;
+    }
+  }
+  .payement-inputs-style {
+    padding: 18px 24px;
+    font-size: $xs;
+    background-color: $bg-color;
+    border-radius: $radius;
+    color: $neutral-light-300;
+    font-weight: $medium;
+    border: none;
+    box-shadow: none;
+    height: auto;
+    @include xl {
+      padding: 16px 32px;
+      font-size: $sm;
+    }
+  }
+}

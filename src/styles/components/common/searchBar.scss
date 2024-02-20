@@ -16,20 +16,6 @@
       height: 274px;
       padding: 10px;
       overflow: scroll;
-      .not__found {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        height: 100%;
-        font-size: $xxxl;
-        color: $neutral-light-300;
-        span {
-          margin-top: 10px;
-          font-size: $lg-1;
-          font-weight: $medium;
-        }
-      }
       .search__results {
           display: flex;
           flex-wrap: wrap;
@@ -77,6 +63,20 @@
                   text-decoration: line-through;
                 }
               }
+            }
+          }
+          .not__found {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-size: $xxxl;
+            color: $neutral-light-300;
+            width: 100%;
+            span {
+              margin-top: 10px;
+              font-size: $lg-1;
+              font-weight: $medium;
             }
           }
       }

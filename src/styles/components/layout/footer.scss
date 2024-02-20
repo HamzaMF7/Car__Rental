@@ -1,0 +1,92 @@
+.layout__footer {
+  background-color: $primary-dark-900;
+  color: white;
+  padding: 50px 0 15px;
+  .content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 20px;
+    @include sm {
+      grid-template-columns: repeat(2, auto);
+      gap: 30px;
+    }
+    @include md {
+      grid-template-columns: repeat(3 , auto);
+      gap: 50px;
+    }
+    @include lg {
+      grid-template-columns: repeat(4 , auto);
+      gap: 70px;
+    }
+    .logo__desc {
+      @include sm {
+        grid-column: span 2;
+      }
+      @include md {
+        grid-column: unset;
+      }
+      p {
+        line-height: 1.9;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .car__logo {
+            font-size: 40px;
+        }
+      }
+    }
+    .quick__links {
+    }
+    .head__office {
+      // grid-column: span 1;
+    }
+    .news__letter {
+      .section__description {
+        margin-bottom: 16px;
+      }
+      input::placeholder {
+        color: $neutral-light-300;
+      }
+    }
+  }
+  .copyright {
+    padding: 24px 0;
+    border-top: 1px solid #ffad3327;
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  //
+  h6 {
+    font-weight: $extraLight;
+    color: $primary-light-200;
+  }
+  h4 {
+    font-weight: $medium;
+    margin-bottom: 20px;
+  }
+  ul {
+    display: grid;
+    gap: 16px;
+  }
+}
+
+.news__letter {
+  .newsletter__input,
+  .send {
+    border: none;
+    border-radius: $radius;
+    background-color: #081249;
+    color: white;
+    // .send {
+    //   border: none;
+    // }
+  }
+}

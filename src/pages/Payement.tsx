@@ -1,13 +1,17 @@
-import RentalSummary from "../components/car/RentalSummary"
+import RentalSummary from "../components/car/RentalSummary";
+import FormsPayement from "../components/forms/FormsPayement";
 
 const Payement = () => {
   return (
-    <main id="payement">
-        <div className="container">
-            <RentalSummary/>
+    <main className="payement">
+      <div className="container">
+        <div className="layout">
+          <RentalSummary />
+          <FormsPayement />
         </div>
+      </div>
     </main>
-  )
-}
+  );
+};
 
-export default Payement
+export default Payement;

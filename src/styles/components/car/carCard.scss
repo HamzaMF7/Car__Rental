@@ -24,9 +24,12 @@
         color: $neutral-light-300;
       }
     }
-    .heart__icon {
-      color: $neutral-light-300;
-      font-size: $lg-2;
+    .fill__wishlist {
+      cursor: pointer;
+      .heart__icon {
+        color: $neutral-light-300;
+        font-size: $lg-2;
+      }
     }
   }
   .main {
@@ -36,6 +39,7 @@
     margin-bottom: 25px;
     .car__image {
       position: relative;
+      cursor: pointer;
       // &::before {
       //   content: "";
       //   position: absolute;
@@ -49,7 +53,7 @@
     .car__info {
       display: flex;
       justify-content: space-evenly;
-      align-items: center;
+      align-items: end;
       flex-direction: row;
       min-width: 70px;
       color: $neutral-light-300;
@@ -83,6 +87,5 @@
         text-decoration: line-through;
       }
     }
-
   }
 }

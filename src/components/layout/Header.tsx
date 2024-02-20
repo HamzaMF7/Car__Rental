@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { TbMenuDeep } from "react-icons/tb";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineClose, AiOutlineUser, AiOutlineHeart } from "react-icons/ai";
@@ -33,6 +33,8 @@ const Header = () => {
   const [isMenuOpen, toggleMenu] = useToggle(false);
   const [isDesktop, toggleDesktop] = useToggle(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const navigate = useNavigate();
 
   const openSearchBar = () => {
     toggleSearch(true);
@@ -91,7 +93,7 @@ const Header = () => {
                   <FiSearch />
                 </span>
               </div>
-              <div className="wishlist__action">
+              <div className="wishlist__action" onClick={()=> navigate("/wishlist")}>
                 <span>
                   <AiOutlineHeart />
                 </span>

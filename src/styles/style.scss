@@ -21,10 +21,11 @@
 @import "./components/filters/filterBarOptions.scss";
 
   // --> forms
-// @import "./components/";
+@import "./components/forms/formsPayement.scss";
 
   // --> layout
 @import "./components/layout/header.scss";
+@import "./components/layout/footer.scss";
 
   // --> sliders
 @import "./components/sliders/heroSlider.scss";
@@ -37,3 +38,4 @@
 @import "./pages/errorPage.scss";
 @import "./pages/home.scss";
 @import "./pages/cars.scss";
+@import "./pages/payement.scss";

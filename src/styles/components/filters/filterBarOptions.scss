@@ -53,8 +53,9 @@
       .sort__value {
         cursor: pointer;
       }
-      .active {
-        color: $info-dark-900;
+      .active__sort__value {
+        color: $info-default-500;
+        font-weight: 700;
       }
       h6 {
         color: $neutral-light-300;

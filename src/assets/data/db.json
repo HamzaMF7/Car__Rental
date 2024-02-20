@@ -3,7 +3,7 @@
     {
       "CarID": 1,
       "CarName": "Dacia Logan",
-      "Price": 10900,
+      "Price": 400,
       "Capacity": 5,
       "Image": "renault3.png",
       "CategoryId": 2,
@@ -17,7 +17,7 @@
     {
       "CarID": 2,
       "CarName": "Renault Clio",
-      "Price": 12000,
+      "Price": 400,
       "Capacity": 5,
       "Image": "clio4.png",
       "CategoryId": 1,
@@ -31,7 +31,7 @@
     {
       "CarID": 3,
       "CarName": "Renault Logan",
-      "Price": 10000,
+      "Price": 400,
       "Capacity": 5,
       "Image": "renault4.png",
       "CategoryId": 2,
@@ -45,7 +45,7 @@
     {
       "CarID": 4,
       "CarName": "Renault Symbol",
-      "Price": 11000,
+      "Price": 400,
       "Capacity": 5,
       "Image": "renault2.png",
       "CategoryId": 2,
@@ -59,7 +59,7 @@
     {
       "CarID": 5,
       "CarName": "Dacia Duster",
-      "Price": 13000,
+      "Price": 600,
       "Capacity": 5,
       "Image": "dacia7.png",
       "CategoryId": 3,
@@ -73,7 +73,7 @@
     {
       "CarID": 6,
       "CarName": "Renault Symbol",
-      "Price": 9000,
+      "Price": 400,
       "Capacity": 5,
       "Image": "renault.png",
       "CategoryId": 2,
@@ -87,7 +87,7 @@
     {
       "CarID": 7,
       "CarName": "Dacia Duster",
-      "Price": 14000,
+      "Price": 600,
       "Capacity": 5,
       "Image": "dacia6.png",
       "CategoryId": 3,
@@ -101,7 +101,7 @@
     {
       "CarID": 8,
       "CarName": "Dacia Sandero Stepway",
-      "Price": 12000,
+      "Price": 350,
       "Capacity": 5,
       "Image": "dacia5.png",
       "CategoryId": 3,
@@ -115,7 +115,7 @@
     {
       "CarID": 9,
       "CarName": "Renault Duster",
-      "Price": 15000,
+      "Price": 600,
       "Capacity": 5,
       "Image": "dacia4.png",
       "CategoryId": 3,
@@ -129,7 +129,7 @@
     {
       "CarID": 10,
       "CarName": "Volkswagen GTI",
-      "Price": 16000,
+      "Price": 700,
       "Capacity": 5,
       "Image": "vlokswagen1.png",
       "CategoryId": 2,
@@ -143,7 +143,7 @@
     {
       "CarID": 11,
       "CarName": "Volkswagen GTI",
-      "Price": 17000,
+      "Price": 700,
       "Capacity": 5,
       "Image": "vlokswagen2.png",
       "CategoryId": 2,
@@ -157,7 +157,7 @@
     {
       "CarID": 12,
       "CarName": "Mercedes-Benz AMG",
-      "Price": 20000,
+      "Price": 1500,
       "Capacity": 5,
       "Image": "mercedes1.png",
       "CategoryId": 2,
@@ -171,7 +171,7 @@
     {
       "CarID": 13,
       "CarName": "Toyota Corolla",
-      "Price": 10000,
+      "Price": 500,
       "Capacity": 5,
       "Image": "toyota1.png",
       "CategoryId": 2,
@@ -185,7 +185,7 @@
     {
       "CarID": 14,
       "CarName": "Toyota Land Cruiser",
-      "Price": 18000,
+      "Price": 800,
       "Capacity": 7,
       "Image": "toyota2.png",
       "CategoryId": 3,
@@ -199,7 +199,7 @@
     {
       "CarID": 15,
       "CarName": "Nissan Rogue",
-      "Price": 15000,
+      "Price": 700,
       "Capacity": 5,
       "Image": "nissan1.png",
       "CategoryId": 3,
@@ -213,7 +213,7 @@
     {
       "CarID": 16,
       "CarName": "Renault Clio",
-      "Price": 30000,
+      "Price": 400,
       "Capacity": 5,
       "Image": "clio2.png",
       "CategoryId": 2,
@@ -227,7 +227,7 @@
     {
       "CarID": 17,
       "CarName": "Renault Clio",
-      "Price": 15000,
+      "Price": 400,
       "Capacity": 5,
       "Image": "clio3.png",
       "CategoryId": 2,
@@ -241,7 +241,7 @@
     {
       "CarID": 18,
       "CarName": "Dacia Sandero Stepway",
-      "Price": 15000,
+      "Price": 350,
       "Capacity": 5,
       "Image": "dacia1.png",
       "CategoryId": 2,
@@ -255,7 +255,7 @@
     {
       "CarID": 19,
       "CarName": "Renault Lodgy",
-      "Price": 15000,
+      "Price": 600,
       "Capacity": 7,
       "Image": "dacia2.png",
       "CategoryId": 3,
