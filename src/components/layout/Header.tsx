@@ -63,7 +63,7 @@ const Header = () => {
         <div className="container">
           <div className="navBar">
             <h2 className="nav__logo">
-              <NavLink to="/">MyCar</NavLink>
+              <NavLink to="/">CarGo</NavLink>
             </h2>
             {(isMenuOpen || isDesktop) && (
               <div className="nav__links ">
