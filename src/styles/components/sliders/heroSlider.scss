@@ -19,17 +19,17 @@
 
     .item__1 {
       background-image: linear-gradient(#000d6b80, #000d6b80),
-        url("/src/assets/slider-img/slider-1.png");
+        url("/slider-img/slider-1.webp");
       @include bg-cover;
     }
     .item__2 {
       background: linear-gradient(#000d6b80, #000d6b80),
-        url("/src/assets/slider-img/slider-2.jpg");
+        url("/slider-img/slider-2.webp");
       @include bg-cover;
     }
     .item__3 {
       background: linear-gradient(rgb(0, 13, 107, 0.5), rgb(0, 13, 107, 0.5)),
-        url("/src/assets/slider-img/slider-3.jpg");
+        url("/slider-img/slider-3.webp");
       @include bg-cover;
     }
 
