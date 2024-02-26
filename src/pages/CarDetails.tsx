@@ -39,8 +39,7 @@ const CarDetails = () => {
     navigate(`/payement/${CarID}`);
   };
 
-  console.log("first:", productDetails[0]?.RateCount);
-  console.log("second", 3);
+
 
   return (
     <main id="carDetails__page">
@@ -124,7 +123,7 @@ const CarDetails = () => {
                   .slice((currentPage - 1) * pageSize, currentPage * pageSize)
                   .map((_, index) => (
                     <div key={index} className="review">
-                      <img src={"/cars-images/avatar-05.png"} alt="" />
+                      <img src={"/cars-images/avatar-05.webp"} alt="" />
                       <div className="info">
                         <div className="user__name">Alex Stanton</div>
                         <div className="date__rate">

@@ -48,10 +48,12 @@ const Footer = () => {
 
   return (
     <footer
-      className="layout__footer"
+      className="layout__footer"    
       style={{
         marginBottom:
-          location.pathname === "/cars" && width && width < 992
+          (location.pathname === "/cars" || location.pathname.startsWith("/car-details/")) &&
+          width &&
+          width < 992
             ? "52px"
             : "0px",
       }}

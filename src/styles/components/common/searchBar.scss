@@ -17,68 +17,69 @@
       padding: 10px;
       overflow: scroll;
       .search__results {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 15px;
+        .search__result__item {
           display: flex;
-          flex-wrap: wrap;
-          gap: 10px 15px;
-          .search__result__item {
-            display: flex;
-            min-width: 385px;
-            .image__container {
-              margin-right: 10px;
-              img {
-                height: 120px;
-              }
-            }
-            .prod__details {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-              .prod__info {
-                .name {
-                  display: inline-block;
-                  font-weight: $semiBold;
-                  font-size: $base;
-                  color: $neutral-default-500;
-                  margin-bottom: 4px;
-                }
-                .category__name {
-                  display: block;
-                  font-weight: $medium;
-                  font-size: $xs; 
-                  color: $neutral-light-300;
-                }
-              }
-              .price {
-                font-weight: $bold;
-                font-size: $base;
-                .per__day {
-                  font-size: $xs;
-                  color: $neutral-light-300;
-                }
-                .old__price {
-                  font-weight: $semiBold;
-                  font-size: $xs;
-                  color: $neutral-light-300;
-                  display: block;
-                  text-decoration: line-through;
-                }
-              }
+          min-width: 385px;
+          .image__container {
+            margin-right: 10px;
+            img {
+              width: 150px;
             }
           }
-          .not__found {
+          .prod__details {
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            font-size: $xxxl;
-            color: $neutral-light-300;
-            width: 100%;
-            span {
-              margin-top: 10px;
-              font-size: $lg-1;
-              font-weight: $medium;
+            justify-content: space-evenly;
+            .prod__info {
+              .name {
+                display: inline-block;
+                font-weight: $semiBold;
+                font-size: $base;
+                color: $neutral-default-500;
+                margin-bottom: 4px;
+                text-wrap : balance
+              }
+              .category__name {
+                display: block;
+                font-weight: $medium;
+                font-size: $xs;
+                color: $neutral-light-300;
+              }
+            }
+            .price {
+              font-weight: $bold;
+              font-size: $base;
+              .per__day {
+                font-size: $xs;
+                color: $neutral-light-300;
+              }
+              .old__price {
+                font-weight: $semiBold;
+                font-size: $xs;
+                color: $neutral-light-300;
+                display: block;
+                text-decoration: line-through;
+              }
             }
           }
+        }
+        .not__found {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          font-size: $xxxl;
+          color: $neutral-light-300;
+          width: 100%;
+          span {
+            margin-top: 10px;
+            font-size: $lg-1;
+            font-weight: $medium;
+          }
+        }
       }
     }
   }

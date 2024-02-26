@@ -17,7 +17,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ toggleSearch }) => {
   const [searchedProducts, setSearchedProducts] = useState<Car[]>([]);
   const searchRef = useRef<HTMLDivElement>(null);
 
-
   const { products } = useSelector((state: RootState) => state.car);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,15 +66,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ toggleSearch }) => {
                         className="search__result__item"
                         key={CarID}
                         onClick={() => {
-                            navigate(`/car-details/${CarID}`);
-                            closeSearch();
+                          navigate(`/car-details/${CarID}`);
+                          closeSearch();
                         }}
                       >
                         <div className="image__container">
-                          <img
-                            src={`/public/cars-images/${Image}`}
-                            alt={CarName}
-                          />
+                          <img src={`/cars-images/${Image}`} alt={CarName} />
                         </div>
                         <div className="prod__details">
                           <div className="prod__info">
